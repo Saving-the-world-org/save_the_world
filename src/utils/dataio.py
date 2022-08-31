@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 from pathlib import Path
+from csv import writer
 from sqlalchemy import inspect, create_engine
 connection_string = 'sqlite:///./src/data/stw_data.db'
 engine = create_engine(connection_string)
@@ -24,8 +25,17 @@ def get_data(query):
 """
 These will be our local db management CRUD functions
 """
-def create_transaction(query):
+def create_transaction(recipient_name, tx_hashHex, timestamp, recipient_account, ipfs_link, donor_account, 
+                    category, lat_long, resource_name, initial_appraisal_value):
 
+    Row=[recipient_name, tx_hashHex, timestamp, recipient_account, ipfs_link, donor_account, 
+                category, lat_long, resource_name, initial_appraisal_value]
+    
+    # Open our existing CSV file in append mode
+    with open(Path("./src/data/Transactions_ho.csv"), "a") as f_object:
+        writer_object = writer(f_object)
+        writer_object.writerow(Row)
+        f_object.close()
     return
 
 def read_transaction(query):

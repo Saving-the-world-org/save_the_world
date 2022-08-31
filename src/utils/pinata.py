@@ -54,7 +54,7 @@ def pin_image(artwork_name, artwork_file):
     # Pin the json to IPFS with Pinata
     json_ipfs_hash = pin_json_to_ipfs(json_data)
 
-    return json_ipfs_hash
+    return json_ipfs_hash, ipfs_file_hash
 
 
 def pin_appraisal_report(report_content):
