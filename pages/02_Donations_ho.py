@@ -151,7 +151,9 @@ def main(df):
             cat = "src/images/Clothing2.png"
         elif category =="Shelter":
             cat = "src/images/Education2.png"
-        elif category =="Medical Equipment":
+        elif category =="Education":
+            cat = "src/images/Education2.png"
+        elif category =="Health":
             cat = "src/images/Health1_first_aid_kit.png"
         else:
             cat = "src/images/_na.png"
