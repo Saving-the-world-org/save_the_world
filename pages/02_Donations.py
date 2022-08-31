@@ -3,7 +3,7 @@ import datetime
 import logging
 import streamlit as st
 import streamlit.components.v1 as components
-import imageio as iio
+# import imageio as iio
 from PIL import Image
 
 from src.utils.dataio import get_data, create_transaction
@@ -160,22 +160,16 @@ def main(df):
         st.write(f"#### Category", category)
         if category =="Water":
             cat = "src/images/Water1.png"
-            file = iio.imread(cat)
         elif category =="Food":
             cat = "src/images/Hunger3.png"
-            file = iio.imread(cat)
         elif category =="Clothing":
             cat = "src/images/Clothing2.png"
-            file = iio.imread(cat)
         elif category =="Shelter":
             cat = "src/images/Education2.png"
-            file = iio.imread(cat)
         elif category =="Medical Equipment":
             cat = "src/images/Health1_first_aid_kit.png"
-            file = iio.imread(cat)
         else:
             cat = "src/images/_na.png"
-            file = iio.imread(cat)
       
         st.image(cat, use_column_width=True)
         # file = iio.imread(cat)
