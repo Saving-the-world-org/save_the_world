@@ -8,11 +8,10 @@ st.set_page_config(layout="wide")
 
 def main(df):
     #Header information 
-    st.title("CITIES", anchor=None)
-    st.subheader("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
-    st.caption("Things we say about this", unsafe_allow_html=False)
+    st.title("Organization Locations", anchor=None)
+    st.subheader("These are the locatins of our affiliate organizations.")
+    st.caption("TODO: This page might go away.  But it can be used as a template for creating other pages.", unsafe_allow_html=False)
     st.write(df)
-
 
 def load_data():
     query_str = "SELECT * FROM CITIES;"

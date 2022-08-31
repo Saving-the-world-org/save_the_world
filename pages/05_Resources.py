@@ -18,8 +18,8 @@ st.set_page_config(layout="wide")
 def main(df):
     #Header information 
     st.title("Resources", anchor=None)
-    st.subheader("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
-    st.caption("work in progress ", unsafe_allow_html=False)
+    st.subheader("Available items for donation.")
+    st.caption("TODO: Perhaps make this page show a row for each type of resource, then a breakdown of size/qty available... instead of showing a table.", unsafe_allow_html=False)
     st.write(df)
 
 def load_data():
