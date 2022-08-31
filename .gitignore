@@ -6,7 +6,6 @@ __pycache__/
 # STW Token
 .env
 .DS_Store
-src/data/stw_data.db
 
 
 # C extensions
