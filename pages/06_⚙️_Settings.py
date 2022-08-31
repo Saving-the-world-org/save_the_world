@@ -10,17 +10,23 @@ st.set_page_config(layout="wide")
 def main(df):
     #Header information 
     st.title("System Settings", anchor=None)
-    st.subheader("Configure database, users, etc.")
+    st.markdown("Manage database, users, etc.")
+    st.markdown("---")
+    st.markdown("#### Recent Transactions:")
+
+    st.markdown(f"  ```{df} ```")
+    st.markdown("---")
+
     # st.write("coming soon")
 
     hvar = """
             <script>
                 var elements = window.parent.document.querySelectorAll('.css-1q8dd3e')
-                elements[0].innerText = 'reloaded';
+                elements[0].innerText = 'done';
                 elements[0].disabled = true;
             </script>
             """
-    btn =  st.button("Reload Database")
+    btn =  st.button("Reload Database Tables from CSV files")
     if btn:
         init_data()
         components.html(hvar, height=0, width=0)
@@ -40,8 +46,10 @@ def main(df):
 
 
 def load_data():
-    query_str = "SELECT * FROM CITIES;"
-    df = get_data(query_str)
+    transaction_query = "SELECT * FROM TRANSACTIONS LIMIT 10;"
+    df = get_data(transaction_query)
+    """TODO: reorder columns and sort rows by recent timestamp
+    """
     return df
 
 if __name__ == '__main__':
