@@ -1,0 +1,2 @@
+Organization,TransactionHash,Timestamp,recipient_account,resource_uri,donor_account,category,lat_long,resource_name,initial_appraisal_value
+Oxfam,0xe54422ad02962f0497969c5d16e11bd08d03085d885d7b19dc104f82a205a115,2022-08-30 18:52:00,0xE7c1b63a4d2548aFC1b69f0f4948b3F65c9ca951,pinned_ipsf,0x5FEFb33E39b3f63069F84801099C6EA665a7C7e4,Water,City,60 Gallons of water,60

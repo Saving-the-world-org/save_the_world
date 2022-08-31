@@ -1,0 +1,10 @@
+{
+    "key": "value",
+    "types": {
+        "0": ["Zero"],
+        "1": ["One"],
+        "2": ["Two"]        
+    },
+    "n_batches": 20,
+    "set_seed": 42
+}
