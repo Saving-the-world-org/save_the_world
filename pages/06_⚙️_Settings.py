@@ -13,11 +13,9 @@ def main(df):
     st.markdown("Manage database, users, etc.")
     st.markdown("---")
     st.markdown("#### Recent Transactions:")
-
+    st.markdown("TODO: reorder columns and sort rows by recent timestamp")
     st.markdown(f"  ```{df} ```")
     st.markdown("---")
-
-    # st.write("coming soon")
 
     hvar = """
             <script>
@@ -48,8 +46,6 @@ def main(df):
 def load_data():
     transaction_query = "SELECT * FROM TRANSACTIONS LIMIT 10;"
     df = get_data(transaction_query)
-    """TODO: reorder columns and sort rows by recent timestamp
-    """
     return df
 
 if __name__ == '__main__':
