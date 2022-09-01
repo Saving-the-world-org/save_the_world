@@ -17,8 +17,8 @@ st.set_page_config(layout="wide")
 def main(df):
     # Page Header information
     st.title("Humanitarian Aid Supply Chain Tracker Tool", anchor=None)
-    st.subheader("This app enabled you to safetly track donating and receiving aid products on a blockchain. ")
-    st.caption("Project 3 by Phoebe Gunter, Harry Oestreicher, Abhishek Banerjee, Gabriel Paganin, Gerald Cortright, Javier", unsafe_allow_html=False)
+    st.write("##### Authors: Phoebe Gunter, Harry Oestreicher, Abhishek Banerjee, Gabriel Paganin, Gerald Cortright, & Javier")
+    st.write("This app enabled you to safetly track donating and receiving aid products on a blockchain. Portability allows users developers to deploy and interact with the ERC721 Smart Contract locally, then switch to almost any ethereum blockchain.")
     #st.markdown("TODO:  Add visualizations etc...")
     st.image("https://www.bbva.com/wp-content/uploads/en/2017/07/blockchain-humanitario.jpg", width=600)
 
