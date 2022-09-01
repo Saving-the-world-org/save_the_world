@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import logging
 import streamlit as st
 import streamlit.components.v1 as components

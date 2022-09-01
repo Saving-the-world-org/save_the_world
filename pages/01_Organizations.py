@@ -1,10 +1,9 @@
+# -*- coding: utf-8 -*-
 import logging
 import numpy as np
-import pandas as pd
-
 import streamlit as st
-from src.utils.dataio import get_data
 import streamlit.components.v1 as components
+from src.utils.dataio import get_data
 from sqlalchemy import inspect, create_engine
 
 connection_string = 'sqlite:///./src/data/stw_data.db'
