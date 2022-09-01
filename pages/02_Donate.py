@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 import logging
+from turtle import color
 import streamlit as st
 import streamlit.components.v1 as components
 from src.utils.dataio import get_data, create_transaction
@@ -70,11 +71,6 @@ def main(df):
         # Value retrieved from resource selectbox
         city = st.text_input("City", recipient_city, type="default", help=None, disabled=True)
 
-        # # Prepopulated and disabled user input
-        # st.text_input("Status", value="Pre-Mint", type="default", help=None, disabled=True)
-
-        #file = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
-
         # READ ALL THE BYTES of new image file template to upload to ipfs!
         image_file = open(Path(f"src/images/tokens/{category}.png"),"rb")
 
@@ -95,20 +91,26 @@ def main(df):
             receipt = w3.eth.waitForTransactionReceipt(tx_hash)
             tx_hashHex = tx_hash.hex()
             # We could really dress up the output here if you have any ideas like diplaying the minted image and metadata on pinata?
-            st.write("Transaction has been successfully mined.")
+            st.markdown(f"#### Transaction has been successfully mined.")
             st.write(f"TX Hash: {tx_hashHex}")
-
-            # st.write(dict(receipt))
-            st.write("Pinata Links:")
-            st.markdown(f"[IPFS Metadata]({ipfs_uri}{resource_ipfs_hash})")
-            st.markdown(f"[IPFS Image]({ipfs_uri}{resource_cid})")
-            # ipfs_link = f"{ipfs_uri}{resource_cid}"
-
+            st.write(f"Pinata Links: [IPFS Metadata]({ipfs_uri}{resource_ipfs_hash}) [IPFS Image]({ipfs_uri}{resource_cid})")
+            st.write(f"Resource CID: {resource_cid}")
+            st.write(f"Recipient Account: {recipient_account}")
+            st.write(f"Category: {category}")
+            st.write(f"City: {city}")
+            st.write(f"Resource: {resource_name}")
+            st.write(f"Appraisal Value: {initial_appraisal_value}")
+            st.image(f"{ipfs_uri}{resource_cid}")
+            st.write("---")
+            st.write(f"Transaction Recipt: ")
+            st.write(dict(receipt))
+            st.write("---")
+            # TODO:
             # create_transaction(recipient_name, tx_hashHex, date_time, recipient_account, ipfs_link, donor_account, category, city, resource_name, initial_appraisal_value)
  
 
     with col2:
-        st.write("#### Donations for")
+        # st.write("#### Donations for")
         if recipient_name == "Action Against Hunger":
             logo = "src/images/logos/Action_Against_Hunger_logo.png"
         elif recipient_name == "Oxfam":
@@ -129,25 +131,24 @@ def main(df):
             logo = "src/images/logos/transparent_hands_logo.webp"
 
         else:
-            logo = "src/images/_na.png"
+            logo = "src/images/content/_na.png"
 
         st.image(logo, use_column_width=True)
-
-        st.write(f"#### Category", category)
+        st.write("---")
         if category =="Water":
-            cat = "src/images/Water1.png"
+            cat = "src/images/tokens/water.png"
         elif category =="Food":
-            cat = "src/images/Hunger3.png"
+            cat = "src/images/tokens/food.png"
         elif category =="Clothing":
-            cat = "src/images/Clothing2.png"
+            cat = "src/images/tokens/clothing.png"
         elif category =="Shelter":
-            cat = "src/images/Education2.png"
+            cat = "src/images/tokens/shelter.png"
         elif category =="Education":
-            cat = "src/images/Education2.png"
+            cat = "src/images/tokens/education.png"
         elif category =="Health":
-            cat = "src/images/Health1_first_aid_kit.png"
+            cat = "src/images/tokens/health.png"
         else:
-            cat = "src/images/_na.png"
+            cat = "src/images/content/_na.png"
       
         st.image(cat, use_column_width=True)
 
