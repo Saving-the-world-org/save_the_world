@@ -10,9 +10,9 @@ engine = create_engine(connection_string)
 insp = inspect(engine)
 
 cities_file = Path("./src/data/cities.csv")
-donations_file = Path("./src/data/donations_ho.csv")
-organizations_file = Path("./src/data/organizations_ho.csv")
-transactions_file = Path("./src/data/transactions_ho.csv")
+donations_file = Path("./src/data/donations.csv")
+organizations_file = Path("./src/data/organizations.csv")
+transactions_file = Path("./src/data/transactions.csv")
 
 def init_data(): 
     cities_df = pd.read_csv(cities_file)
