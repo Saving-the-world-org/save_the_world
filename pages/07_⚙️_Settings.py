@@ -12,14 +12,12 @@ def main():
     st.title("System Settings and Data", anchor=None)
     st.markdown("Manage database, users, etc.")
     st.markdown("---")
-    # st.markdown("#### Recent Transactions:")
-    # st.markdown("TODO: reorder columns and sort rows by recent timestamp")
-    # st.markdown(f"  ```{df} ```")
 
     btn =  st.button("RESET ALL db tables")
     if btn:
+        # re-initialize the database
         init_data()
-        # components.html(hvar, height=0, width=0)
+        # Display the tables
         org_query="SELECT * FROM ORGANIZATIONS;"
         org_df = get_data(org_query)
         donations_query="SELECT * FROM DONATIONS;"

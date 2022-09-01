@@ -9,8 +9,9 @@ st.set_page_config(layout="wide")
 
 def main():
     #Header information 
-    st.title("Local Data", anchor=None)
-    st.markdown("Manage database, users, etc.")
+    st.title("System Administration", anchor=None)
+    st.markdown("This page will contain STW Token management, image generation, managing STW Token Roles, Reporting, local transaction logging for ETL pipelines.")
+    st.markdown("For this MVP, the page simple displays local database tables.")
     st.markdown("---")
     org_query="SELECT * FROM ORGANIZATIONS;"
     org_df = get_data(org_query)

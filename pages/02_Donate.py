@@ -10,6 +10,7 @@ from src.utils.pinata import pin_image
 from web3 import Web3
 from dotenv import load_dotenv
 
+# Load constant variables from .env file
 load_dotenv()
 
 contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
@@ -23,6 +24,7 @@ w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
 
 # Begin Streamlit calls
 st.set_page_config(layout="wide")
+
 
 @st.cache(allow_output_mutation=True)
 def load_contract():
@@ -89,10 +91,9 @@ def main(df):
                 int(initial_appraisal_value)
             ).transact({'from': donor_account, 'gas': 1000000})
             receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-            tx_hashHex = tx_hash.hex()
-            # We could really dress up the output here if you have any ideas like diplaying the minted image and metadata on pinata?
             st.markdown(f"#### Transaction has been successfully mined.")
-            st.write(f"TX Hash: {tx_hashHex}")
+            st.write(f"Timestamp: {date_time}")
+            st.write(f"TX Hash: {tx_hash}")
             st.write(f"Pinata Links: [IPFS Metadata]({ipfs_uri}{resource_ipfs_hash}) [IPFS Image]({ipfs_uri}{resource_cid})")
             st.write(f"Resource CID: {resource_cid}")
             st.write(f"Recipient Account: {recipient_account}")
@@ -105,7 +106,7 @@ def main(df):
             st.write(f"Transaction Recipt: ")
             st.write(dict(receipt))
             st.write("---")
-            # TODO:
+            # TODO: sync with local database for reporting etc
             # create_transaction(recipient_name, tx_hashHex, date_time, recipient_account, ipfs_link, donor_account, category, city, resource_name, initial_appraisal_value)
  
 
