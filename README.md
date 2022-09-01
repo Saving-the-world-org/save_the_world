@@ -1,6 +1,7 @@
 # save_the_world
 
-Motive
+Motive:
+
 Currently, charitable foundations spend about 30% of donations in administrative expenses. Such event depletes the amount of resources delivered to people in need. Reducing the involvement of intermediary institutions will inevitably translate into more help for the intended recipients. 
 Traditional charity systems have an intrinsic lack of transparency. Donors have no way to track or ensure assistance is getting to the right place. This has generated a high degree of mistrust towards charitable foundations. This could be improved by providing users with efficient ways to track donations and moreover, make each transaction distinguishable from the others. Such improvement would help restoring donor confidence and consequently, increase overall donations.
 
