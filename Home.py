@@ -19,28 +19,7 @@ def main(df):
     st.title("Humanitarian Aid Supply Chain Tracker Tool", anchor=None)
     st.write("##### Authors: Phoebe Gunter, Harry Oestreicher, Abhishek Banerjee, Gabriel Paganin, Gerald Cortright, & Javier")
     st.write("This app enabled you to safetly track donating and receiving aid products on a blockchain. Portability allows users developers to deploy and interact with the ERC721 Smart Contract locally, then switch to almost any ethereum blockchain.")
-    #st.markdown("TODO:  Add visualizations etc...")
     st.image("https://www.bbva.com/wp-content/uploads/en/2017/07/blockchain-humanitario.jpg", width=600)
-
-    # with st.sidebar.form(key ='Form1'):
-        # user_word = st.text_input("Enter a keyword", "habs")    
-        # select_language = st.radio('Tweet language', ('All', 'English', 'French'))
-        # include_retweets = st.checkbox('Include retweets in data')
-        # num_of_tweets = st.number_input('Maximum number of tweets', 100)
-        # submitted1 = st.form_submit_button(label = 'Search Twitter 🔎')
-        
-    hvar = """
-            <script>
-                var elements = window.parent.document.querySelectorAll('.css-1q8dd3e')
-                elements[0].innerText = 'reloaded';
-                elements[0].disabled = true;
-            </script>
-            """
-    #btn =  st.button("Reload Dastabase")
-    # if btn:
-    #     init_data()
-    #     components.html(hvar, height=0, width=0)
-
     return
 
 # @st.cache
