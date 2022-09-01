@@ -4,7 +4,6 @@ import streamlit as st
 import streamlit.components.v1 as components
 from src.utils.dataio import get_data
 from src.utils.minter import *
-from src.utils.pinata import pin_file_to_ipfs, pin_json_to_ipfs, convert_data_to_json
 
 from dotenv import load_dotenv
 load_dotenv()

@@ -36,7 +36,7 @@ def load_contract():
 
 contract = load_contract()
 
-col1, col2, = st.columns([3, 1])
+col1, col2 = st.columns([3, 1])
 
 def main(df):
 
