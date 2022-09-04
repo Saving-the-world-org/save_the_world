@@ -33,15 +33,6 @@ def main():
     st.write("CITIES")
     st.dataframe(cities_df)
 
-
-@st.cache
-def load_data():
-    return
-    # transaction_query = "SELECT * FROM TRANSACTIONS LIMIT 50;"
-    # df = get_data(transaction_query)
-    # return df
-
 if __name__ == '__main__':
     logging.basicConfig(level=logging.CRITICAL)
-    # df = load_data()
     main()

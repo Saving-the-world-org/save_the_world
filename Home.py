@@ -24,6 +24,7 @@ def main(df):
 
 # @st.cache
 def load_data():
+    # This is a compulory query that is available on each page to build out the solution with additional functionality.
     query_str = "SELECT * FROM DONATIONS;"
     df = get_data(query_str)
     return df

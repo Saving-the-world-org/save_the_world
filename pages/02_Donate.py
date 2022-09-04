@@ -10,7 +10,7 @@ from src.utils.pinata import pin_image
 from web3 import Web3
 from dotenv import load_dotenv
 
-# Load constant variables from .env file
+# Load the required variables from .env file
 load_dotenv()
 
 contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
@@ -20,14 +20,16 @@ recipient_df = get_data("SELECT Organization, City, Address from ORGANIZATIONS")
 categories_df = get_data("SELECT DISTINCT Category from DONATIONS")
 resources_df = get_data("SELECT Category, Item, QtySize, USD, Tags from DONATIONS")
 donor_account = os.getenv("PUBLIC_KEY")
+# Instantiate a web3 object inline
 w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
+
 
 # Begin Streamlit calls
 st.set_page_config(layout="wide")
 
-
 @st.cache(allow_output_mutation=True)
 def load_contract():
+    # Load the contract address into an object using the ABI code and smart contract address
     with open(contract_abi) as f:
         this_abi = json.load(f)
     contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
@@ -48,7 +50,7 @@ def main(df):
         st.title("Make a Donation", anchor=None)
         st.write("WIP page for testing minting process with local image files instead of streamlit uploaded file.")
 
-        # Selectbox for recipient Org-City-Address
+        # Selectbox for recipient Org-City-Address (JOIN & SPLIT columns to create data relationships)
         recipient_df["org"] = recipient_df[["Organization", "City", "Address"]].agg(" - ".join, axis=1)
         orgs = recipient_df.org.unique()
         recipient = st.selectbox("Donation Recipient", options=orgs)
@@ -59,14 +61,14 @@ def main(df):
         # Selectbox for Category
         category = st.selectbox("Donation Category", options=categories_df)
 
-        # Selectbox for Resource - aggregate columns then parse
+        # Selectbox for Resources - (JOIN & SPLIT columns to create data relationships)
         resources_df["USD"] = resources_df["USD"].astype(str)
         resources_df["item"] = resources_df[["Item", "QtySize", "USD"]].agg(" - ".join, axis=1)
         this_cat = resources_df[resources_df['Category'].str.contains(category)]
         items = this_cat.item.unique()
         resource = st.selectbox("Resource", options=items)
 
-        # Value retrieved from resource selectbox
+        # Value retrieved from resource selectbox and SPLIT to get the last value column `USD`
         resource_name = resource.split("-")[0]
         initial_appraisal_value = int(float(resource.split("-")[2]))
 
@@ -77,9 +79,13 @@ def main(df):
         image_file = open(Path(f"src/images/tokens/{category}.png"),"rb")
 
         if st.button("Donate"):
-            now = datetime.datetime.now()       
+            # Timestamp when button is clicked (can't hurt right?)
+            now = datetime.datetime.now()
             date_time = now.strftime("%Y/%m/%d %H:%M:%S")
+            # Use function to call Pinata API to pin the resource to the public IPFS
             resource_ipfs_hash, resource_cid = pin_image(resource_name, image_file)
+
+            # Set up the transaction and make the function call to the deployed contract
             resource_uri = f"ipfs://{resource_ipfs_hash}"
             tx_hash = contract.functions.safeMintResource(
                 recipient_account,
@@ -90,6 +96,7 @@ def main(df):
                 resource_name,
                 int(initial_appraisal_value)
             ).transact({'from': donor_account, 'gas': 1000000})
+            # get the reciept, then display transaction data to user.
             receipt = w3.eth.waitForTransactionReceipt(tx_hash)
             st.markdown(f"#### Transaction has been successfully mined.")
             st.write(f"Timestamp: {date_time}")
@@ -111,7 +118,7 @@ def main(df):
  
 
     with col2:
-        # st.write("#### Donations for")
+        # Populate the top right column with selected organization's logo
         if recipient_name == "Action Against Hunger":
             logo = "src/images/logos/Action_Against_Hunger_logo.png"
         elif recipient_name == "Oxfam":
@@ -136,6 +143,8 @@ def main(df):
 
         st.image(logo, use_column_width=True)
         st.write("---")
+
+        # Populate the right bottom column with an image of the item to be minted
         if category =="Water":
             cat = "src/images/tokens/water.png"
         elif category =="Food":
@@ -156,6 +165,7 @@ def main(df):
 
 
 def load_data():
+    # Populate a dataframe from SQL table to use on this page.
     query_str = "SELECT * FROM DONATIONS;"
     df = get_data(query_str)
     return df

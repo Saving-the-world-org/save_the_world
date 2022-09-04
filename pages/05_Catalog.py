@@ -4,8 +4,9 @@ import streamlit as st
 import streamlit.components.v1 as components
 from src.utils.dataio import get_data
 from src.utils.minter import *
-
 from dotenv import load_dotenv
+
+# Load the environment variables
 load_dotenv()
 contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
 contract_abi = os.getenv("ABI_PATH")
@@ -23,6 +24,7 @@ def main(df):
     st.write(df)
 
 def load_data():
+    # Get all current resources from the donations table in the database
     query_str = "SELECT * FROM DONATIONS;"
     df = get_data(query_str)
     return df

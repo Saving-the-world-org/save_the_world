@@ -31,15 +31,15 @@ def load_json(path_to_json: str) -> Dict[str, Any]:
         logging.error(error)
         raise TypeError("Invalid JSON file")
 
-
 def set_up_blockchain(contract: str, abi_path: str):
     """
     Purpose:
-       Setup all blockchain items
+       Setup all blockchain environment variables
     Args:
-        path_to_json (String): Path to  json file
+        contract address (String): The deployed smart contract address
+        path_to_json (String): Path to the ABI json file
     Returns:
-        Conf: JSON file if loaded, else None
+        JSON Config: JSON file if loaded, else None
     """
     ############ Ethereum Setup ############
     PUBLIC_KEY = os.getenv("PUBLIC_KEY")

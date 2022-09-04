@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from os import walk, path, sep
 from requests import Session, Request
 
+# Load the Pinata API keys
 load_dotenv()
 
 json_headers = {
