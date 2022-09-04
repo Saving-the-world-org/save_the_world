@@ -145,11 +145,14 @@ This is where the local db is prepopulated with data from CSV files to provide l
 
 ### Example STW Token URI:
 
-The minted tokens are stored in the pinata.cloud ipfs platform.
+The minted tokens are stored in the pinata.cloud ipfs platform. Example IPFS Tokenized Relief Asset (STW Token):
 
-Example IPFS Tokenized Relief Asset (STW Token):
 - [token](https://gateway.pinata.cloud/ipfs/QmT3dxsNK2wmNb1KRUtZMxr456VFzLE36RivdhYG9nVb3Z)
 - [token metadata](https://gateway.pinata.cloud/ipfs/bafkreictziodueto6xhrmvtjkdwvnuyrn3yqg5zu5bzwixfufrfmyomaeq)
       
 NOTE: This MVP only stores variables allow within the Pinata free tier.
+
+### Submitted Donation Results:
+
+![donations](images/streamlit_donation_result.png)
 
